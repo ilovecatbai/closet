@@ -1,0 +1,21 @@
+开源组件与许可 / Open-source notices
+
+@imgly/background-removal 1.7.0
+Copyright IMG.LY and contributors. GNU Affero General Public License v3.
+License text: IMG-LY-AGPL-3.0.md (in this directory)
+Source: https://github.com/imgly/background-removal-js
+Exact distributed npm package: https://www.npmjs.com/package/@imgly/background-removal/v/1.7.0
+Model data: https://staticimgly.com/@imgly/background-removal-data/1.7.0/package.tgz
+
+onnxruntime-web 1.21.0
+Copyright Microsoft Corporation. MIT license.
+License text: ONNX-Runtime-MIT.txt (in this directory)
+Source: https://github.com/microsoft/onnxruntime/tree/v1.21.0
+
+ISNET model: https://github.com/xuebinqin/DIS (MIT, as declared by the data package).
+See ../models/ThirdPartyLicenses.json and ../models/LICENSE.md.
+
+Before redistributing or publicly hosting a modified application, review the AGPL
+corresponding-source obligations or obtain a suitable commercial license from IMG.LY.
+This notice is not a substitute for those obligations. No public deployment is
+performed by this repository's build scripts.
