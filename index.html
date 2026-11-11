@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#865464" />
+  <meta name="description" content="只属于你的离线衣橱，在手机上收藏每一种搭配。" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="衣橱" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <title>Closet · 私人衣橱</title>
+  <script type="module" crossorigin src="./assets/index-CX6bDs1-.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BbjRd4dV.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="heading"><p class="eyebrow">CLOSET</p><h1 id="page-title">我的衣橱</h1></div>
+      <div class="header-actions">
+        <button id="import-button" class="button soft" aria-label="导入衣橱">导入</button>
+        <button id="add-button" class="button primary" aria-label="添加单品"><span aria-hidden="true">＋</span> 添加</button>
+      </div>
+    </header>
+    <div class="intro"><span id="item-count">0 件单品</span><span class="privacy-dot">仅保存在此设备</span></div>
+    <div id="filter-bar" class="filters" role="group" aria-label="单品分类"></div>
+    <main id="main"></main>
+    <aside class="install-tip" id="install-tip" hidden>在 Safari 中点「分享」→「添加到主屏幕」，像 App 一样打开。</aside>
+    <footer class="legal-footer"><a href="./licenses/NOTICE.txt" target="_blank" rel="noopener">开源许可</a></footer>
+    <nav class="tab-bar" aria-label="主导航">
+      <button class="tab active" data-tab="closet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7a2 2 0 1 1 3 1.7V11L3 18h18l-9-7"/></svg>衣橱</button>
+      <button class="tab" data-tab="outfit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"/><path d="M7 11l-4 6m14-6 4 6M8 10h8l-1 7H9Zm2 7-1 5m5-5 1 5"/></svg>搭配</button>
+      <button class="tab" data-tab="favorites"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>收藏</button>
+    </nav>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <input id="import-file" type="file" accept="application/json,.json" hidden />
+    <dialog id="detail-dialog" class="sheet"><div id="detail-content"></div></dialog>
+    <dialog id="favorite-dialog" class="sheet compact">
+      <form id="favorite-form"><div class="sheet-heading"><h2>收藏这套搭配</h2><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div>
+        <label>搭配名称<input id="favorite-name" name="name" placeholder="给这份灵感起个名字" maxlength="80" /></label>
+        <button class="button primary full" type="submit">收藏</button>
+      </form>
+    </dialog>
+    <dialog id="add-dialog" class="sheet">
+      <form id="add-form">
+        <div class="sheet-heading"><h2>添加单品</h2><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div>
+        <label class="upload-zone">拍照或选择图片<span id="photo-file-name">尚未选择照片</span><input id="garment-file" type="file" accept="image/*" capture="environment" /></label>
+        <div class="add-preview" id="add-preview" hidden><img id="add-image" alt="单品预览" /></div>
+        <p class="helper">建议只拍一件衣服，背景越简单越好。抠图在本机完成，照片不会上传。</p>
+        <div class="removal-controls"><button type="button" id="remove-background" class="button soft" disabled>本机抠图</button><button type="button" id="keep-original" class="button text" hidden>保留原图</button></div>
+        <p id="removal-status" class="helper" role="status">首次抠图需下载约 56 MB 本站模型；下载后可离线使用。</p>
+        <div class="field-grid"><label>品牌<input name="brand" placeholder="unknown" maxlength="160" /></label><label>尺码<input name="size" placeholder="unknown" maxlength="80" /></label></div>
+        <label>描述<input name="description" placeholder="颜色、款式或细节" maxlength="500" /></label>
+        <label>用途<input name="use" placeholder="unknown" maxlength="300" /></label>
+        <label>官方链接<input name="officialLink" type="url" inputmode="url" placeholder="https://…" maxlength="2000" /></label>
+        <div class="field-grid"><label>来源<select name="ownership"><option value="unknown">unknown</option><option value="Self-bought">自购</option><option value="Gift">礼物</option></select></label>
+          <label>搭配位置<select name="slot" id="slot-select"><option value="top">上衣</option><option value="bottom">下装</option><option value="onePiece">裙装/连体</option></select></label></div>
+        <fieldset><legend>分类（可多选）</legend><div id="add-filters" class="checkbox-grid"></div></fieldset>
+        <p class="helper">未填写的信息将保存为 unknown。原图也会转成 PNG，但没有透明背景。</p>
+        <button id="save-item" class="button primary full" type="submit" disabled>保存单品</button>
+      </form>
+    </dialog>
+  </div>
+</body>
+</html>

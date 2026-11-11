@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Closet · 私人衣橱",
+  "short_name": "衣橱",
+  "description": "在此设备上整理衣物，收藏搭配灵感。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8f5f1",
+  "theme_color": "#865464",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
